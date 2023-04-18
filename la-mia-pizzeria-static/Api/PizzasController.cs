@@ -16,7 +16,7 @@ namespace la_mia_pizzeria_static.Api
         }
 
         [HttpGet]
-        public IActionResult GetPizzad([FromQuery] string? name)
+        public IActionResult GetPizzas([FromQuery] string? name)
         {
             var pizzas = _context.Pizzas
                 .Where(p => name == null || p.Name.ToLower().Contains(name.ToLower()))
