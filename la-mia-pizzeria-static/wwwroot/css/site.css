@@ -117,3 +117,21 @@ form {
     color: white !important;
     
 }
+
+#pizzas-table,
+#no-pizzas,
+#pizzas-filter {
+    display: none;
+}
+
+    #pizzas-table.show {
+        display: table;
+    }
+
+:is(#no-pizzas, #pizzas-filter).show {
+    display: block;
+}
+
+#pizzas-loader.hide {
+    display: none;
+}

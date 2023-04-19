@@ -1,39 +1,45 @@
-﻿@model Pizza[]
-
-@{
-    ViewData["Title"] = "My pizzas";
-    var pizzas = Model;
+﻿@{
+    ViewData["Title"] = "My Pizzas";
 }
 
 @if (User.IsInRole("Admin"))
 {
-    <div class="pad d-flex justify-content-center">
-        <a href="@Url.Action("Create", "Pizza")" class="btn btn-primary">Create</a>
+    <div class="pad">
+        <a href="@Url.Action("Create", "Pizza")">Create a pizza</a>
     </div>
 }
 
-@if (pizzas.Length is 0)
-{
-    <p>No pizzas to display</p>
-}
-else
-{
-    <table>
+<p id="pizzas-loader">Loading pizzas...</p>
+
+<p id="no-pizzas">No pizzas to display</p>
+
+<div class="grid gap">
+    <div id="pizzas-filter">
+        <div class="form-field">
+            <label>Filter by name</label>
+            <input placeholder="filter" />
+        </div>
+    </div>
+
+    <table id="pizzas-table">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Price</th>
                 <th>Description</th>
+                <th>Price</th>
                 <th>Category</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var pizza in pizzas)
-            {
-                @await Html.PartialAsync("_Row", pizza)
-            }
-        </tbody>
+        <tbody id="pizzas"></tbody>
     </table>
+</div>
+
+@section Scripts
+    {
+    <script>
+        loadPizzas();
+        initFilter();
+    </script>
 }
