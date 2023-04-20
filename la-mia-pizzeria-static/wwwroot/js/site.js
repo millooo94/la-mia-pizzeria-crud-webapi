@@ -35,7 +35,7 @@ const pizzaComponent = pizza => `
         <td>${pizza.id}</td>
         <td class="image"><img class="pizza-link-image" src="${pizza.img}"></td>
         <td class="name">
-            <a href="/pizza/detail/${pizza.id}">${pizza.name}</a>
+            <a href="/pizza/detail/${pizza.id}" class="btn btn-dark">${pizza.name}</a>
         </td>
        <td class="description">${pizza.description}</td>
        <td class="price">${pizza.price}</td>
@@ -141,23 +141,23 @@ const renderErrors = errors => {
 
 // </CreatePost>
 
-const initUpdateForm = (id) => {
-    const form = document.querySelector("#post-edit-form");
-    const name = document.querySelector("#name");
-    const description = document.querySelector("#description");
-     const price = document.querySelector("#price");
-     const categoryId = form.querySelector("#category-id");
-     const img = form.querySelector("#img");
+//const initUpdateForm = (id) => {
+//    const form = document.querySelector("#post-edit-form");
+//    const name = document.querySelector("#name");
+//    const description = document.querySelector("#description");
+//     const price = document.querySelector("#price");
+//     const categoryId = form.querySelector("#category-id");
+//     const img = form.querySelector("#img");
 
-    getPizza(id).then(pizza => {
-         name.value = pizza.name;
-         description.value = pizza.description;
-         price.value = pizza.price;
-         categoryId.value = pizza.categoryId;
-         img.value = pizza.img;
-    });
-};
+//    getPizza(id).then(pizza => {
+//         name.value = pizza.name;
+//         description.value = pizza.description;
+//         price.value = pizza.price;
+//         categoryId.value = pizza.categoryId;
+//         img.value = pizza.img;
+//    });
+//};
 
-const getPizza = id => axios
-     .get(`/api/pizzas/${id}`)
-    .then(res => res.data);
+//const getPizza = id => axios
+//     .get(`/api/pizzas/${id}`)
+//    .then(res => res.data);
